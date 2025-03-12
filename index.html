@@ -1,319 +1,132 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>img.vpsindo.host - File Uploader</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<meta name="description" content="Just For Uploading File On This Sites.">
-	<meta property="og:description" content="Crushed Is Better Than Fixing">
-	<meta property="og:image" content="https://fn4tichz.net/fn4.gif">
-    <link rel="icon" type="image/png" href="https://hidestresser.llc/bbx.png">
-	<meta name="copyright" content="Tools">
-	<meta name="author" content="Fn4ticHz">
-	<meta name="theme-color" content="#1f1f1f">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
-	
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploader - GitHub Pages</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #2e2d2d;
+            background-color: #1f1f1f;
             color: white;
             padding: 20px;
         }
-
         #uploadContainer {
             text-align: center;
             width: 90%;
             max-width: 500px;
-            margin-bottom: 40px;
+            background: #2e2d2d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
-
         #uploadForm {
             border: 2px dashed #aaa;
-            padding: 40px 20px;
+            padding: 30px;
             cursor: pointer;
             border-radius: 10px;
-            transition: background-color 0.3s, border-color 0.3s;
-            position: relative;
+            transition: background-color 0.3s;
         }
-
         #uploadForm:hover {
-            background-color: #0e8803;
-            border-color: #0e8803;
+            background-color: #4CAF50;
+            border-color: #4CAF50;
         }
-
         #fileInput {
             display: none;
         }
-
-        #output {
-            margin-top: 20px;
-        }
-
-        #output p {
-            color: #4CAF50;
-        }
-
         #progressContainer {
             width: 100%;
             background-color: #ddd;
-            border-radius: 25px;
+            border-radius: 10px;
             margin-top: 20px;
             display: none;
+            height: 20px;
             overflow: hidden;
-            position: relative;
-            height: 30px;
         }
-
         #progressBar {
             height: 100%;
             width: 0%;
             background-color: #4CAF50;
-            border-radius: 25px 0 0 25px;
             transition: width 0.4s ease;
         }
-
-        #progressText {
-            position: absolute;
-            width: 100%;
+        #output {
+            margin-top: 20px;
             text-align: center;
-            line-height: 30px;
-            color: white;
-            font-weight: bold;
-            top: 0;
-            left: 0;
         }
-
-        @media (max-width: 600px) {
-            #uploadForm {
-                padding: 30px 15px;
-            }
-
-            #progressContainer {
-                height: 25px;
-            }
-
-            #progressText {
-                line-height: 25px;
-                font-size: 14px;
-            }
-        }
-
-        @import url('https://fonts.googleapis.com/css?family=Bungee');
-        @import url('https://fonts.googleapis.com/css?family=Squada+One');
-        @import url('https://fonts.googleapis.com/css?family=Bebas+Neue');
-
-        server {
-            color: yellow;
-        }
-        oren {
-            color: orange;
-        }
-
-        #historyContainer {
-            width: 90%;
-            max-width: 800px;
-        }
-
-        #historyContainer h2 {
-            font-family: 'Bungee', cursive;
-            margin-bottom: 20px;
-        }
-
-        #historyList {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #historyList li {
-            background-color: #3a3a3a;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        #historyList a {
+        #output a {
             color: #4CAF50;
             text-decoration: none;
+            font-weight: bold;
         }
-
-        #historyList a:hover {
+        #output a:hover {
             text-decoration: underline;
-        }
-
-        #privateCheckboxContainer {
-            margin-top: 10px;
-            text-align: left;
-        }
-
-        #privateCheckboxContainer label {
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-solid" style="background: #2e2d2d;">
-                <div class="box-header with-border" style="background: #2e2d2d; border: #ffffff;">
-                    <center><font color="white" class="box-title" style="font-family: Bungee">Upload Your Image Here.</font></center>
-                </div>
-            </div>
-        </div>
-    </div>
 
+    <h1>Upload File ke GoFile.io</h1>
+    
     <div id="uploadContainer">
-        <div id="uploadForm" onclick="openFileInput()" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)" ondragenter="dragEnterHandler(event)" ondragleave="dragLeaveHandler(event)">
-            <p>Drag & drop an image file here or click to choose a file.</p>
-            <input type="file" id="fileInput" accept="image/*" onchange="fileSelected()">
-            <div id="privateCheckboxContainer">
-                <label>
-                    <input type="checkbox" id="privateCheckbox"> Private
-                </label>
-            </div>
+        <div id="uploadForm" onclick="document.getElementById('fileInput').click()">
+            <p>Drag & drop file di sini atau klik untuk memilih file.</p>
+            <input type="file" id="fileInput" onchange="fileSelected()">
         </div>
 
         <div id="progressContainer">
             <div id="progressBar"></div>
-            <div id="progressText">0%</div>
         </div>
-        
+
         <div id="output"></div>
     </div>
 
-    <div id="historyContainer">
-        <h2>Upload History</h2>
-        <ul id="historyList"></ul>
-    </div>
-
     <script>
-        function openFileInput() {
-            document.getElementById('fileInput').click();
-        }
-
         function fileSelected() {
             var fileInput = document.getElementById('fileInput');
             var file = fileInput.files[0];
 
-            if (file && file.type.startsWith('image/')) {
-                uploadFile(file);
+            if (file) {
+                uploadToGoFile(file);
             } else {
-                document.getElementById('output').innerHTML = '<p style="color: red;">Only image files are allowed (png, jpg, jpeg, svg, tiff).</p>';
-                document.getElementById('progressContainer').style.display = 'none';
+                alert("Silakan pilih file terlebih dahulu!");
             }
         }
 
-        function uploadFile(file) {
+        function uploadToGoFile(file) {
             var formData = new FormData();
-            formData.append('file', file);
-
-            var isPrivate = document.getElementById('privateCheckbox').checked;
-            formData.append('private', isPrivate ? '1' : '0');
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'imgup.php', true);
+            formData.append("file", file);
 
             var progressContainer = document.getElementById('progressContainer');
             var progressBar = document.getElementById('progressBar');
-            var progressText = document.getElementById('progressText');
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
-            progressText.innerHTML = '0%';
 
-            xhr.upload.onprogress = function(event) {
-                if (event.lengthComputable) {
-                    var percentComplete = Math.round((event.loaded / event.total) * 100);
-                    progressBar.style.width = percentComplete + '%';
-                    progressText.innerHTML = percentComplete + '%';
+            fetch("https://api.gofile.io/uploadFile", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "ok") {
+                    document.getElementById('output').innerHTML = `<p>Upload sukses! <a href="${data.data.downloadPage}" target="_blank">Lihat File</a></p>`;
+                } else {
+                    document.getElementById('output').innerHTML = `<p style="color: red;">Upload gagal!</p>`;
                 }
-            };
-
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        var response = xhr.responseText;
-                        document.getElementById('output').innerHTML = response;
-                        loadHistory();
-                    } else {
-                        document.getElementById('output').innerHTML = '<p style="color: red;">File upload failed. Please try again.</p>';
-                    }
-                    progressContainer.style.display = 'none';
-                }
-            };
-
-            xhr.send(formData);
+                progressContainer.style.display = 'none';
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById('output').innerHTML = `<p style="color: red;">Terjadi kesalahan!</p>`;
+                progressContainer.style.display = 'none';
+            });
         }
-
-        function dragOverHandler(event) {
-            event.preventDefault();
-            event.dataTransfer.dropEffect = 'copy';
-        }
-
-        function dragEnterHandler(event) {
-            event.preventDefault();
-            document.getElementById('uploadForm').style.backgroundColor = '#4CAF50';
-            document.getElementById('uploadForm').style.borderColor = '#4CAF50';
-        }
-
-        function dragLeaveHandler(event) {
-            event.preventDefault();
-            document.getElementById('uploadForm').style.backgroundColor = '';
-            document.getElementById('uploadForm').style.borderColor = '#aaa';
-        }
-
-        function dropHandler(event) {
-            event.preventDefault();
-            document.getElementById('uploadForm').style.backgroundColor = '';
-            document.getElementById('uploadForm').style.borderColor = '#aaa';
-    
-            var files = event.dataTransfer.files;
-            if (files.length > 0) {
-                document.getElementById('fileInput').files = files;
-                fileSelected();
-            }
-        }
-
-        function loadHistory() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'history.php', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    var historyList = document.getElementById('historyList');
-                    historyList.innerHTML = '';
-
-                    try {
-                        var history = JSON.parse(xhr.responseText);
-                        history.forEach(function(item) {
-                            var listItem = document.createElement('li');
-                            var link = document.createElement('a');
-                            link.href = item;
-                            link.textContent = item;
-                            link.target = '_blank';
-                            listItem.appendChild(link);
-                            historyList.appendChild(listItem);
-                        });
-                    } catch (e) {
-                        console.error('Failed to parse history JSON:', e);
-                    }
-                }
-            };
-            xhr.send();
-        }
-
-        window.onload = function() {
-            loadHistory();
-        };
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91e764924906e763',t:'MTc0MTY1Nzc0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
 
+</body>
+</html>
