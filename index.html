@@ -71,10 +71,12 @@
 </head>
 <body>
 
-    <h1>Upload File ke GoFile.io</h1>
+    <h1>Upload File ke File.io</h1>
     
     <div id="uploadContainer">
-        <div id="uploadForm" onclick="document.getElementById('fileInput').click()">
+        <div id="uploadForm" onclick="document.getElementById('fileInput').click()" 
+            ondrop="dropHandler(event)" 
+            ondragover="dragOverHandler(event)">
             <p>Drag & drop file di sini atau klik untuk memilih file.</p>
             <input type="file" id="fileInput" onchange="fileSelected()">
         </div>
@@ -92,13 +94,13 @@
             var file = fileInput.files[0];
 
             if (file) {
-                uploadToGoFile(file);
+                uploadToFileIO(file);
             } else {
                 alert("Silakan pilih file terlebih dahulu!");
             }
         }
 
-        function uploadToGoFile(file) {
+        function uploadToFileIO(file) {
             var formData = new FormData();
             formData.append("file", file);
 
@@ -107,14 +109,14 @@
             progressContainer.style.display = 'block';
             progressBar.style.width = '0%';
 
-            fetch("https://api.gofile.io/uploadFile", {
+            fetch("https://file.io", {
                 method: "POST",
                 body: formData
             })
             .then(response => response.json())
             .then(data => {
-                if (data.status === "ok") {
-                    document.getElementById('output').innerHTML = `<p>Upload sukses! <a href="${data.data.downloadPage}" target="_blank">Lihat File</a></p>`;
+                if (data.success) {
+                    document.getElementById('output').innerHTML = `<p>Upload sukses! <a href="${data.link}" target="_blank">Lihat File</a></p>`;
                 } else {
                     document.getElementById('output').innerHTML = `<p style="color: red;">Upload gagal!</p>`;
                 }
@@ -125,6 +127,20 @@
                 document.getElementById('output').innerHTML = `<p style="color: red;">Terjadi kesalahan!</p>`;
                 progressContainer.style.display = 'none';
             });
+        }
+
+        function dropHandler(event) {
+            event.preventDefault();
+            var files = event.dataTransfer.files;
+            if (files.length > 0) {
+                document.getElementById('fileInput').files = files;
+                fileSelected();
+            }
+        }
+
+        function dragOverHandler(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'copy';
         }
     </script>
 
